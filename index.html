@@ -20,7 +20,27 @@
         console.log(player2)
       }
       // Die beiden Inputs vergleichen und gucken wer gewonnen hat
+      // R > S > P > R
+      /// Möglichkeit 1: Einfach alles vergleichen!
+      /// Möglichkeit 2: Gleichheit vergleichen und sich für den Rest etwas überlegen
+      /// Möglichkeit 3: Hashmap reinprogrammieren
+      let comparisonMap = new Map([
+        [("R", "R"), "Unentschieden"],
+        [("R", "P"), "Spieler 2 gewinnt"],
+        [("R", "S"), "Spieler 1 gewinnt"],
+        [("P", "R"), "Spieler 1 gewinnt"],
+        [("P", "P"), "Unentschieden"],
+        [("P", "S"), "Spieler 2 gewinnt"],
+        [("S", "R"), "Spieler 2 gewinnt"],
+        [("S", "P"), "Spieler 1 gewinnt"],
+        [("S", "S"), "Unentschieden"],
+      ]);
+
+      
+
+      
       // sieger:in ausgeben
+
     </script>
   </body>
 </html>
