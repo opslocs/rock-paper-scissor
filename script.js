@@ -1,5 +1,7 @@
 import { getRandomInt } from "./helper.js";
-  
+
+var playerScore = 0
+var computerScore = 0
 
 function getComputerSelection(){
     const possibleChoices = ["Rock", "Paper", "Scissors"]
@@ -29,10 +31,12 @@ function playRound(playerSelection, computerSelection){
         resultString2 = `${playerSelection} draws ${computerSelection}`
         break;
       case "player":
+        playerScore = playerScore + 1
         resultString1 = "You win!"
         resultString2 = `${playerSelection} beats ${computerSelection}`
         break;
       case "computer":
+        computerScore = computerScore + 1
         resultString1 = "You lose!"
         resultString2 = `${computerSelection} beats ${playerSelection}`
         break;
@@ -57,6 +61,7 @@ function RPSGame(){
 }
 
 
+
 let buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   // and for each one we add a 'click' listener
@@ -64,8 +69,14 @@ buttons.forEach((button) => {
     const playerSelection = getPlayerSelection(button.textContent)
     const computerSelection = getComputerSelection()
     
+    // show result
     let resultString = playRound(playerSelection, computerSelection)
     let resultDiv = document.querySelector("#result")
-    resultDiv.textContent = resultDiv.textContent + resultString
+    resultDiv.textContent = `Das Ergebnis ist ${resultString}`
+
+    //show score
+    let scoreDiv = document.querySelector("#score")
+    scoreDiv.textContent = `Der Stand ist: ${playerScore} für dich 
+      und ${computerScore} für den Computer`
   });
 });
