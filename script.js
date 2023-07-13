@@ -78,5 +78,13 @@ buttons.forEach((button) => {
     let scoreDiv = document.querySelector("#score")
     scoreDiv.textContent = `Der Stand ist: ${playerScore} für dich 
       und ${computerScore} für den Computer`
+
+    if (playerScore === 5){
+      alert("Du hast gewonnen!")
+      window.location.reload()
+    } else if (computerScore === 5){
+      alert("Der Computer gewinnt!")
+      window.location.reload()
+    }
   });
 });
