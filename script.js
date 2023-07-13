@@ -44,14 +44,10 @@ function playRound(playerSelection, computerSelection){
 }
   
   // Input erster Spieler + in Variable speichern + Eingabe überprüfen
-function getPlayerSelection(){
-    let cleanPlayerSelection
-    while (!(cleanPlayerSelection == "Rock" || cleanPlayerSelection == "Paper" || cleanPlayerSelection =="Scissors")){
-      let playerSelection = prompt("Spieler 1, gib deine Entscheidung an!")
-      let lowerPlayerSelection = playerSelection.toLowerCase()
-      let cleanPlayerSelection = lowerPlayerSelection.charAt(0).toUpperCase() + lowerPlayerSelection.slice(1)
-      return cleanPlayerSelection
-    }
+function getPlayerSelection(playerSelection){
+  let lowerPlayerSelection = playerSelection.toLowerCase()
+  let cleanPlayerSelection = lowerPlayerSelection.charAt(0).toUpperCase() + lowerPlayerSelection.slice(1)
+  return cleanPlayerSelection
 }
 
 function RPSGame(){
@@ -60,4 +56,13 @@ function RPSGame(){
     console.log(playRound(playerSelection, computerSelection))
 }
 
-RPSGame()
+
+let buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
+    const playerSelection = getPlayerSelection(button.textContent)
+    const computerSelection = getComputerSelection()
+    console.log(playRound(playerSelection, computerSelection))
+  });
+});
