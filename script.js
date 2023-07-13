@@ -63,6 +63,9 @@ buttons.forEach((button) => {
   button.addEventListener('click', () => {
     const playerSelection = getPlayerSelection(button.textContent)
     const computerSelection = getComputerSelection()
-    console.log(playRound(playerSelection, computerSelection))
+    
+    let resultString = playRound(playerSelection, computerSelection)
+    let resultDiv = document.querySelector("#result")
+    resultDiv.textContent = resultDiv.textContent + resultString
   });
 });
